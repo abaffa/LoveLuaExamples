@@ -1,0 +1,30 @@
+function cardume_spawn(vetor)
+  x = love.math.random(0, 600)
+  tab.insert(vetor, {
+      dirx = 1,
+      diry = -1,
+      px = x,
+      hitbox_px = x,
+      py = 800,
+      sx = 0.5,
+      sy = 0.4,
+      ox = 168,
+      oy = 165,
+      rot=0,
+      tipo=3,  
+      width=156,
+      height=131
+    })
+end
+
+function cardume_move(dt, tab)
+  if tab.px > 550 then
+    tab.dirx = -1
+    tab.sx = -0.4
+  elseif tab.px < 50 then
+    tab.dirx = 1
+    tab.sx = 0.4
+  end
+  tab.px = tab.px +  (300 * tab.dirx * dt)
+  tab.py = tab.py + (100 *tab.diry * dt)
+end

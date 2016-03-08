@@ -1,0 +1,9 @@
+- Definir projetil como tabela (com velocidade e imagem)
+- Criar função de spawn que recebe (x, y, dir) dá um "table.insert([nome do projetil],{x=x,y=y, dir=dir,
+hitbox = Collider:addRectangle(x,y,23,10)})"
+- Criar arrow.draw e arrow.update usando for each do ruby
+
+
+- Checar em qual anim_frame o player está
+- Se ele tiver nos anim_frame da esquerda, por exemplo, deve-se
+criar um projétil e aumentar seu x

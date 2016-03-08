@@ -1,0 +1,54 @@
+function coral_load() --tabela
+ coral= {
+  px = 0,
+  py = 800,
+  rot = 1.57,
+  spawn = love.math.random(1,2),
+  hitbox_px=435,
+  hitbox_py=800,
+  sx = 0.5,
+  sy = 1,
+  ox = 0,
+  oy = 0,
+  tipo = 2
+  }
+end
+function coral_spawn(vetor)
+  tab.insert(vetor, {
+  px = 0,
+  py = 800,
+  rot = 1.57,
+  spawn = love.math.random(1,2),
+  hitbox_px=0,
+  hitbox_py=800,
+  sx = 0.5,
+  sy = 0.75,
+  ox = 75,
+  oy = 125,
+  tipo = 2,
+  width=150,
+  height= 250
+  })
+  end
+  function coral_move(dt, tab) --movimento + spawn
+
+    if tab.spawn == 2 then
+      tab.px = 475
+      tab.hitbox_px=475
+      --tab.rot = 1.57
+      tab.sy=-0.75
+      tab.hitbox_py = tab.hitbox_py - (150 * dt)
+      tab.py = tab.py - (150*dt)
+
+    else
+      tab.px = 140
+      tab.hitbox_px = tab.px - tab.width 
+      --tab.rot = 1.57
+      tab.py = tab.py - (150*dt)
+      tab.hitbox_py = tab.hitbox_py - (150 * dt)
+    end
+  end
+ 
+function coral_draw()
+  love.graphics.draw(coral.imagem, coral.px,coral.py, coral.rot,0.5)
+end

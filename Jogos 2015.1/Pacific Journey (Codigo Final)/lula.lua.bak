@@ -1,0 +1,30 @@
+function lula_spawn(vetor)
+  tab.insert(vetor,{
+      dirx = 1,
+      diry = 1,
+      px = love.math.random(50, 550),
+      py = -550,
+      rot = 0,
+      sx = 1,
+      sy = 1,
+      ox = 0,
+      oy = 0,
+      tipo = 5,
+      espera = 0,
+      width = 110,
+      height = 318
+    })
+end
+
+function lula_move(dt, tab)
+  if tab.py>-5 then
+    tab.espera=tab.espera+dt
+    if tab.espera>3 then
+      tab.diry = -1
+      tab.espera = 0
+      tab.py = tab.py + (150 * tab.diry * dt)
+    end
+  else 
+    tab.py = tab.py + (150 * tab.diry * dt)
+  end
+end

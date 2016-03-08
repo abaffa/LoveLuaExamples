@@ -1,0 +1,296 @@
+require "alga"
+require "coral"
+require "lixo"
+require "cardume"
+require "lula"
+require "missil"
+require "menu"
+require "gameover"
+require "submarino"
+
+love.window.setTitle("Pacific Journey")
+
+local musica=love.audio.newSource("(8-Bit) Yellow Submarine.mp3")
+love.audio.play(musica)
+local background
+local brilho
+timer=0
+score=0
+score_mod=1
+penumbra=0
+spawn_timer=0
+enemies = {}
+misseis = {}
+missil_image = love.graphics.newImage("missil.png")
+imagens={}
+--[1=alga, 2=coral, 3=cardume, 4=lixo, 5=lula]--
+function Check_Collision (x1, y1, w1, h1, x2, y2, w2, h2)
+  return x1 < x2+w2 and x2 < x1+w1 and y1 < y2+h2 and y2 < y1+h1
+end
+
+function love.load()
+--carrega o sub--
+  sub_load()
+--load inicial das imagens
+  imagens[1] = love.graphics.newImage("alga.png")
+  imagens[2] = love.graphics.newImage("coral.png")
+  imagens[3] = love.graphics.newImage("cardume.png")
+  imagens[4] = love.graphics.newImage("lixo.png")
+  imagens[5] = love.graphics.newImage("lula.png")
+  --menu--
+  gamestate = "menu"
+  love.graphics.setFont(love.graphics.newFont("Beatles.ttf", 20))
+  botao_spawn(34, 408, "Play", "Play")
+  botao_spawn(205, 485, "Quit", "Quit")
+
+  love.window.setMode(600, 650)
+  love.graphics.setBackgroundColor(0, 0, 0)
+  for i=1, 2, 1 do --carrega as frames da animacao--
+    sub.anim[i]=love.graphics.newImage("sub"..i..".png")
+  end
+  background=love.graphics.newImage("background.png")--define o background--
+
+  -- Game over--
+  botao_spawn_over(100, 408, "Menu", "Menu")
+  botao_spawn_over(500, 520, "Quit", "Quit")
+
+end
+
+function love.mousepressed(x, y) -- Checar mouse para apertar Play e Quit
+  if gamestate == "menu" then
+    checarBotao(x, y)
+  end
+  if gamestate == "gameover" then
+    checarBotao_over(x, y)
+  end
+end
+
+function love.update(dt)
+  if gamestate == "jogando" then
+    --brilho
+    brilho=0.1+score
+    if brilho>= 254 then
+      brilho=255
+    end
+    --penumbra
+    if brilho >= 255 then
+      penumbra=penumbra+(0.5*dt)
+    end
+    if penumbra>=30 then
+      penumbra=30
+    end
+    --timer--
+    timer=timer+(score_mod*dt)
+    if timer<5 then
+      score_mod=1
+    elseif timer<10 and timer>5 then
+      score_mod=2
+    elseif timer<20 and timer>10 then
+      score_mod=3
+    end
+    score=timer
+
+    --randomizador de spawn--
+    spawn_timer=spawn_timer+dt
+    if spawn_timer>2 then
+      spawn=math.random(0, 5)
+      if spawn<=1 then
+        alga_spawn(enemies)
+      elseif spawn>1 and spawn<=2 then
+        coral_spawn(enemies)
+      elseif spawn>2 and spawn<=3 then
+        cardume_spawn(enemies)
+      elseif spawn>3 and spawn<=4 then
+        lixo_spawn(enemies)
+      else
+        lula_spawn(enemies)
+      end
+      spawn_timer=0
+    end
+    --movendo os misseis--
+    for i, missil in ipairs(misseis) do
+      missil_move(dt, missil)
+    end
+
+    --movendo os inimigos--
+    for i, enemy in ipairs(enemies) do
+      if not enemy.collided and not enemy.acertomissil  then
+        if enemy.tipo==1 then
+          alga_move(dt, enemy)
+        elseif enemy.tipo==2 then
+          coral_move(dt, enemy)
+        elseif enemy.tipo==3 then
+          cardume_move(dt, enemy)
+        elseif enemy.tipo==4 then
+          lixo_move(dt, enemy)
+        elseif enemy.tipo==5 then
+          lula_move(dt, enemy)
+        end
+      end
+    end
+
+    function love.keypressed(key)
+      if key == " " then
+        missil_spawn(misseis)
+      end
+    end
+
+    --move p direita--
+    if love.keyboard.isDown("right") and sub.px + sub.anim[sub.anim_frame]:getWidth() < love.window.getWidth() then
+      sub.anim_frame=2
+      sub.px=sub.px+(sub.speed*dt)
+    end
+
+    --move p esquerda--
+    if love.keyboard.isDown("left") and sub.px+5>0 then
+      sub.px=sub.px-(sub.speed*dt)
+      sub.anim_frame=1
+    end
+
+--------colisao sub e inimigos----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    for i, enemy in ipairs(enemies) do  --colisao da alga--
+      if enemy.tipo == 1 then
+        if Check_Collision(sub.px, sub.py, sub.width, sub.height, enemy.hitbox_px, enemy.hitbox_py, enemy.width, enemy.height) and not enemy.collided then
+          sub.collided = true
+          tab.remove(enemies, i)
+          sub.lives=sub.lives-3
+        else
+          sub.collided=false
+        end
+      elseif enemy.tipo == 2 then  --colisao do coral--
+        if Check_Collision(sub.px, sub.py, sub.width, sub.height, , enemy.hitbox_px, enemy.hitbox_py, enemy.width, enemy.height) and not enemy.collided then
+          sub.collided=true
+          tab.remove(enemies, i)
+          sub.lives=sub.lives-1
+        else
+          sub.collided=false
+        end
+      elseif enemy.tipo == 3 then  --colisão do cardume--
+        if Check_Collision(sub.px, sub.py, sub.width, sub.height, enemy.px-enemy.width/2, enemy.py-enemy.height/2, enemy.width, enemy.height) and not enemy.collided then
+          sub.collided = true
+          tab.remove(enemies, i)
+          sub.lives=sub.lives-1
+        else
+          sub.collided=false
+        end
+      elseif enemy.tipo==4 then  --colisão do lixo--
+        if Check_Collision(sub.px, sub.py, sub.anim[sub.anim_frame]:getWidth(), sub.anim[sub.anim_frame]:getHeight(), enemy.px, enemy.py, enemy.width, enemy.height) and not enemy.collided then
+          sub.collided = true
+          tab.remove(enemies, i)
+          sub.lives=sub.lives-1
+        else
+          sub.collided=false
+        end
+      elseif enemy.tipo==5 then  --colisão da lula--
+        if Check_Collision(sub.px, sub.py, sub.anim[sub.anim_frame]:getWidth(), sub.anim[sub.anim_frame]:getHeight(), enemy.px, enemy.py, enemy.width, enemy.height) and not enemy.collided then
+          sub.collided=true
+          tab.remove(enemies, i)
+          sub.lives=sub.lives-5
+        else
+          sub.collided=false
+        end
+      end
+    end
+
+
+--------------colisao missil inimigos---------------------------------------------------------------------------------------------------------------------------------------------------------------      
+    misseis_to_remove = {}
+    enemies_to_remove = {}
+
+    for i, missil in ipairs(misseis) do
+      if missil.py > 900 then -- remocao de misseis--     
+        tab.remove(misseis, i)
+      else
+        for n, enemy in ipairs(enemies) do
+          if enemy.tipo == 1 or enemy.tipo == 2 then
+            if Check_Collision(missil.px, missil.py, missil.width, missil.height,  enemy.hitbox_px, enemy.hitbox_py, enemy.width, enemy.height) then
+              table.insert(misseis_to_remove, i)
+              table.insert(enemies_to_remove, n)
+            end
+          elseif enemy.tipo==3 then
+            if  Check_Collision(missil.px, missil.py, missil.width, missil.height, enemy.px-enemy.width/2, enemy.py-enemy.height/2, enemy.width, enemy.height) then
+              table.insert(misseis_to_remove, i)
+              table.insert(enemies_to_remove, n)
+            end
+          elseif enemy.tipo==4 then
+            if Check_Collision(missil.px, missil.py, missil.width, missil.height, enemy.px, enemy.py, enemy.width, enemy.height) then
+              table.insert(misseis_to_remove, i)
+              table.insert(enemies_to_remove, n)
+            end
+          end
+        end
+      end
+    end
+  else
+    gamestate = "menu"
+  end
+
+  -- remocao do que colidiu--
+  if (enemies_to_remove) then
+    for v in pairs(enemies_to_remove) do
+      tab.remove(enemies, v)
+    end
+  end
+
+  if (misseis_to_remove) then
+    for v in pairs(misseis_to_remove) do
+      tab.remove(misseis, v)
+    end
+  end
+
+  --remoção de objetos q sairam da tela--
+  for n, enemy in ipairs(enemies) do
+    if enemy.py < -560 then  --remoção de objetos q sairam da tela--
+      tab.remove(enemies, n)
+    end
+  end
+
+--gameover
+  if sub.lives < -100 then
+    gamestate = "gameover"
+  end
+end
+
+--Funcao universal para desenhar os inimigos--
+function univ_draw(tab, imagem)
+  love.graphics.draw(imagem, tab.px, tab.py, tab.rot, tab.sx, tab.sy, tab.ox, tab.oy)
+end
+
+function love.draw()
+  if gamestate == "menu" then
+    botao_draw()
+  end
+
+  if gamestate =="gameover" then
+    botao_draw_over()
+  end
+
+  if gamestate == "jogando" then 
+    love.graphics.draw(background, 0, 0, 0, 0.65)--background é desenhado por trás
+
+--Lê os tipos e desenha as imgs--
+    for i, enemy in ipairs(enemies) do
+      univ_draw(enemy, imagens[enemy.tipo])
+    end
+
+    for i, missil in ipairs(misseis) do
+      univ_draw(missil, missil_image)
+    end
+
+    love.graphics.setColor(0, 0, 0, brilho)
+    love.graphics.polygon("fill", sub.px+70, sub.py+50, sub.px-600+70+penumbra*9, 1300, -300, 0, 900, 0, sub.px+600-penumbra*9, 1300)
+    love.graphics.setColor(255 , 255 , 255)
+    love.graphics.draw(sub.anim[sub.anim_frame], sub.px, sub.py, 0, sub.sx, sub.sy)
+    love.graphics.print("Lives:", 470, 560)
+    love.graphics.print(sub.lives, 470, 580)
+    love.graphics.print("Score:", 470, 610)
+    love.graphics.print(math.floor(score), 490, 630)
+    
+    love.graphics.rectangle("line", sub.px, sub.py, sub.width * sub.sx, sub.height * sub.sy)
+
+  else
+
+    gamestate = "menu"
+
+  end
+end

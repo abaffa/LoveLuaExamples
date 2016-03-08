@@ -1,0 +1,19 @@
+function sub_load()
+  sub={
+    px=love.window.getWidth()/2,
+    py=30,
+    speed=200,
+    anim={},
+    anim_frame=1,
+    lives=3
+  }
+end
+
+function move(dt)
+  if sub.px < 800 and sub.dir == 1 then
+    sub.px=sub.px+(sub.vel*dt*sub.dir)
+  end
+  if sub.px > 0 and sub.dir == -1 then
+    sub.px=sub.px-(sub.vel*dt*sub.dir)
+  end
+end

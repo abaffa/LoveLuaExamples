@@ -1,0 +1,49 @@
+function alga_load() --tabela
+  alga= { 
+    px = 0, 
+    py = 800, 
+    imagem = love.graphics.newImage ("alga.png"), 
+    rot = 1.57, 
+    hitbox_px=0, 
+    spawn = love.math.random(1, 2), 
+    ox=alga.imagem:getWidth()/2, 
+    oy=alga.imagem:getHeight()/2, 
+    sx=0.5, 
+    sy=0.5, 
+    tipo =1, 
+
+  }
+end
+function alga_spawn(vetor)
+  tab.insert(vetor, { 
+      px = 150, 
+      py = 800, 
+      rot = 1.57, 
+      hitbox_px = 500, 
+      hitbox_py = 800, 
+      spawn = love.math.random(1, 2), 
+      ox = 0, 
+      oy = 0, 
+      sx = 0.5, 
+      sy = 0.5, 
+      tipo = 1, 
+      width = 100, 
+      height = 100
+    })
+end
+
+function alga_move(dt, tab) --movimento + spawn
+  if tab.spawn == 2 then
+    tab.px = 460
+    tab.hitbox_px = 460
+    tab.sy = -0.5
+  else
+    tab.hitbox_px = 50
+  end
+  tab.py = tab.py - (150 * dt)
+  tab.hitbox_py = tab.hitbox_py - (150 * dt)
+end
+
+function alga_draw()
+  love.graphics.draw(alga.imagem, alga.px, alga.py, alga.rot, 0.5, 0.5, alga.imagem:getWidth()/2, alga.imagem:getHeight()/2)
+end

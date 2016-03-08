@@ -1,0 +1,38 @@
+button = {}
+gameover = love.graphics.newImage("gameover.png")
+local firsttime = 1
+
+function botao_spawn_over(x, y, text, id)
+  tab.insert(button, {x = x, y = y, text = text, id = id})
+end
+
+function botao_draw_over()
+  
+  for i, v in ipairs(button) do
+    love.graphics.print(v.text, v.x, v.y)
+    fonte = love.graphics.newFont("Beatles.ttf", 98)
+    
+    if firsttime == 1 then
+    love.graphics.draw(gameover, 0, 0, 0, .5, .5)
+    end
+    
+   end
+   
+end
+
+function checarBotao_over(x, y)
+  for i, v in ipairs(button) do
+    if x > v.x and
+    x < v.x + fonte:getWidth(v.text) and
+    y > v.y and
+    y < v.y + fonte:getHeight() then
+      if v.id == "Quit" then
+        love.event.push("quit")
+      end
+      if v.id == "Menu" then
+        gamestate = "menu"
+        firsttime = 0 
+      end
+    end
+  end
+end
