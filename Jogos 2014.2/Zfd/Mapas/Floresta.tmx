@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="JapaneseVillage" tilewidth="32" tileheight="32">
+  <image source="Zombie For Days/TiledSet/JapaneseVillage.png" trans="ff00ff" width="256" height="1312"/>
+ </tileset>
+ <tileset firstgid="329" name="free_tileset_version_10" tilewidth="32" tileheight="32">
+  <image source="Zombie For Days/TiledSet/free_tileset_version_10.png" trans="ff00ff" width="480" height="1216"/>
+ </tileset>
+ <tileset firstgid="899" name="mountain_landscape_23" tilewidth="32" tileheight="32">
+  <image source="Zombie For Days/TiledSet/mountain_landscape_23.png" trans="ff00ff" width="512" height="512"/>
+ </tileset>
+ <layer name="BackGround" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwwENAAAMw6BamH+zF3JIWDVVVfXFA4PuMwE=
+  </data>
+ </layer>
+ <layer name="Caminhos" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL8QAiIhZH4wniwCA3slwJiaSQ+iC0IxdJoWIYG9ivRwMzhar8KzVwxcu3XAmJtPBgGQGwdGthvBMTGeDAMgNgmNLB/FIyCUUB9AABDGAY3
+  </data>
+ </layer>
+ <layer name="Arbustos e Arvóres" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzNlkkOwjAMRStuwDWACzDtmVkxbAJsGCS4/5pfiUpWZbexcJxaekqktnmRnSYJvaL4ZGILAsgV1D9AOwQjx/lQ/xjtBEwN/DOMMY8Yh/oXaJdgxXwXO14Va7y7Ie9LuY2tf308bUi59Vp/Um67tP7bov+D9pvw8O/A3tFP+wdwBCdwVjit/AFcwBXcEvvrOS37d/AAT/Binlv7uflINU/h16yrf/zSXhnzz1msf2mv9PI3nUPW4bn/cnX19HN1rfyammmC3hu4uqb2t90bunL+vjNR+r/J7j91
+  </data>
+ </layer>
+ <layer name="Colisao" width="32" height="24" opacity="0">
+  <properties>
+   <property name="obstacle" value="1"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzzYmRg8BpgPFAA2f6BcA+t7CfWHGLtJ9Vd6OpxmU2OO8kBlNpPKRho+3EBUuwXhOLBaj857iPWfmxmYyvDaGU/Pr3oZpDiBlrYT4obhlL6p5f99KyHRu2nX/xj89dwt59Q+4Ke9pMjT2tAr/Y1PgwAK/cx9A==
+  </data>
+ </layer>
+ <layer name="Sangue" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFxIImJsrN+M3IwPCHkXJzyAVcQD9wU8Ef6ICUsGmmgf2kgJFuPzZQPAjdNFxACRMEExPvMLW0iI+BTnf47Kd1+huu5e4oGHlgsKRlWFk1CoYuAADpbw6A
+  </data>
+ </layer>
+</map>

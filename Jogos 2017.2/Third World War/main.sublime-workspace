@@ -1,0 +1,234 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"p_scale_",
+				"p_scale_x"
+			],
+			[
+				"p_",
+				"p_scale_y"
+			],
+			[
+				"Player",
+				"player"
+			],
+			[
+				"hero_pos",
+				"hero_pos_x"
+			],
+			[
+				"player",
+				"PlayerMove"
+			],
+			[
+				"h_f",
+				"h_frame_l"
+			],
+			[
+				"hero_anim_",
+				"hero_anim_time"
+			],
+			[
+				"hero_ani",
+				"hero_anim_frame"
+			],
+			[
+				"hero_",
+				"hero_pos_y"
+			],
+			[
+				"hero_p",
+				"hero_pos_x"
+			],
+			[
+				"hero_pos_",
+				"hero_pos_y"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 137.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Install Package Control"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/PUC/Nova pasta (2)/player.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/Imagens/Fases/(10) WhatsApp.html",
+		"/C/Users/lucas/Desktop/Eng 1000/Seta/Seta.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/Imagens/PistolParado_01.png",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/Imagens/PistolParado_02.png",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/PMove1.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/enemies.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/F4.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/F3.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/F2.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/player.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/main.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/F1a.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/Movimentação.lua",
+		"/C/Users/lucas/Desktop/Grupo 2/Jogo/Acessorios.lua",
+		"/C/Users/lucas/Desktop/Eng 1000/Aula do dia/main.lua",
+		"/C/Users/lucas/Desktop/Eng 1000/Vai e volta/Vai e volta.lua",
+		"/C/Users/lucas/AppData/Roaming/Sublime Text 3/Packages/User/love-run.sublime-build"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 116.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/love-run.sublime-build",
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,15 @@
+Cada pixel tem um valor associado (atualmente 0, 1, 2 ou 3) pela matriz solidb[pixelsX][pixelsY]
+Cada valor lhe atribui alguma propriedade.
+
+Valor 0 -> pixel navegável, transpassível.
+Valor 1 -> pixel onde há um bloco permanente, intranspassível.
+Valor 2 -> pixel onde está ocorrendo explosão, causa dano.
+Valor 3 -> pixel onde há um explosivo armado (banana), intranspassível.
+Valor 4 (?) -> pixel onde há um bloco destrutível, instranspassível até que sofra explosão.
+
+As colisões entre personagens (jogador com inimigos) se dá pela função de colisão presente no enemy,
+enquanto as colisões de personagens com elementos do cenário se dão todas pela função playerCollision,
+onde o personagem em questão:
+ a -> morre caso entre em contato com pixel de valor 2
+ b -> não pode se mover em determinada direção em contato com pixels de valor 1, 3 ou 4.
+ c -> caso seja um inimigo em contato com pixels da valor 1, 3 ou 4, efetua mudança no movimento de acordo com sua IA

@@ -1,0 +1,21 @@
+solidb
+0 livre
+1 bloco permanente
+2 explosao
+3 banana
+4 bloco destrutivel
+5 bloco destrutivel sendo destruido
+6 power up
+7 power up sendo destruido
+
+
+tipo
+0 jogador
+1 ia básica movimento eixo permanente com troca de sentido
+2 ia básica movimento com troca de eixo e de sentido
+
+menu.mode
+1 inicial
+2 novo jogo
+3 modo fase
+4 in-game

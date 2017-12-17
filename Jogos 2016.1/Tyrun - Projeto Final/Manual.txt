@@ -1,0 +1,45 @@
+ Tycon --- Manual de Instruções em português
+
+   Controles:
+		-Mouse; 
+		 >>Botão esquerdo: Selecionar, Ativar Power-Ups.
+		
+		-Teclado
+		 >> "WASD": Movimentação de Tycon.
+
+		 >>Barra de Espaço: Pulo.
+
+		 >>"U": Desliga a música.
+		
+		 >>"I": Liga a música.
+
+		 >>"Return/Enter": Atalho.
+
+
+   Tycon:
+
+		>>"Seu espírito de atleta ainda está vivo!"
+
+
+   Inimigos:
+
+		-Dinossauro:
+		
+		 >>Habita a Floresta dos Dinossauros Fofinhos(Fase 1)
+
+		-DinoDino-HalaHala:
+
+		 >>Ex-comandante do planeta love2d. Tem seus motivos para caçar Tycon.
+
+		-Yeti:
+
+		 >> Habita a Era do Gelo.
+		
+		-???
+
+		 >>Rumores sugerem que uma criatura, fruto de diversas experiências com anabolizantes radioativos habita
+		as profundezas da Era do Gelo.
+
+		-Meteoros:
+		
+		 >>Proclamam a extinção dos seres que habitam o love2d, na Fase 3.
