@@ -1,0 +1,2 @@
+Este arquivo só existe para que a pasta BGM & SFX não fique vazia e possa existir no GitHub.
+

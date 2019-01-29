@@ -1,0 +1,19 @@
+111111
+11001001110111010
+2.75
+6.5
+13.0
+16.50
+713
+100
+1111111
+
+Temples
+Heart containers
+Hearts
+MP
+Max. MP
+Max. Stamina
+Rupees
+Spells
+Easter Eggs
