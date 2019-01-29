@@ -1,0 +1,15 @@
+MAIOR
+6.50 cm altura
+4.75 cm largura
+
+JOGADOR
+1.20 cm altura
+4.50 cm largura
+
+PERSONAGEM
+2.20 cm altura
+5.25 cm largura
+
+VOLTAR
+2.54 cm altura
+4.53 cm largura

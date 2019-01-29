@@ -1,0 +1,8 @@
+﻿                                 Controles:
+
+                       Esc - Abrir Menu de pausa
+                          Setas - Movimentação
+                                 J - Ataque
+                            K - Ataque alternativo
+                               L - Usar item
+                        Enter - Seleção do Menu
